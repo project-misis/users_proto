@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package = "github.com/project-misis/users_proto/pb";
+
+package user;
+
+service Greeter {
+  rpc SayHello (HelloReq) returns (HelloReply) {}
+}
+
+message HelloReq {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}
