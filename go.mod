@@ -1,4 +1,4 @@
-module github.com/project-misis/users_proto/pb
+module github.com/project-misis/users_proto
 
 go 1.24.6
 
