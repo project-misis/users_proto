@@ -7,5 +7,6 @@ pkgs.mkShell {
     pkgs.protobuf
     pkgs.protoc-gen-go
     pkgs.protoc-gen-go-grpc
+    pkgs.git
   ];
 }

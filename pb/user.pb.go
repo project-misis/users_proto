@@ -7,12 +7,11 @@
 package pb
 
 import (
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
-
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 const (
@@ -136,14 +135,11 @@ func file_user_proto_rawDescGZIP() []byte {
 	return file_user_proto_rawDescData
 }
 
-var (
-	file_user_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-	file_user_proto_goTypes  = []any{
-		(*HelloReq)(nil),   // 0: user.HelloReq
-		(*HelloReply)(nil), // 1: user.HelloReply
-	}
-)
-
+var file_user_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_user_proto_goTypes = []any{
+	(*HelloReq)(nil),   // 0: user.HelloReq
+	(*HelloReply)(nil), // 1: user.HelloReply
+}
 var file_user_proto_depIdxs = []int32{
 	0, // 0: user.Greeter.SayHello:input_type -> user.HelloReq
 	1, // 1: user.Greeter.SayHello:output_type -> user.HelloReply
