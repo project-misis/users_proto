@@ -19,101 +19,215 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Greeter_SayHello_FullMethodName = "/user.Greeter/SayHello"
+	Crud_CreateUser_FullMethodName     = "/user.Crud/CreateUser"
+	Crud_DeleteUserById_FullMethodName = "/user.Crud/DeleteUserById"
+	Crud_UpdateUserById_FullMethodName = "/user.Crud/UpdateUserById"
+	Crud_GetUserById_FullMethodName    = "/user.Crud/GetUserById"
 )
 
-// GreeterClient is the client API for Greeter service.
+// CrudClient is the client API for Crud service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type GreeterClient interface {
-	SayHello(ctx context.Context, in *HelloReq, opts ...grpc.CallOption) (*HelloReply, error)
+type CrudClient interface {
+	CreateUser(ctx context.Context, in *UserPost, opts ...grpc.CallOption) (*Status, error)
+	DeleteUserById(ctx context.Context, in *UserDelete, opts ...grpc.CallOption) (*Status, error)
+	UpdateUserById(ctx context.Context, in *UserUpdate, opts ...grpc.CallOption) (*User, error)
+	GetUserById(ctx context.Context, in *UserGet, opts ...grpc.CallOption) (*User, error)
 }
 
-type greeterClient struct {
+type crudClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewGreeterClient(cc grpc.ClientConnInterface) GreeterClient {
-	return &greeterClient{cc}
+func NewCrudClient(cc grpc.ClientConnInterface) CrudClient {
+	return &crudClient{cc}
 }
 
-func (c *greeterClient) SayHello(ctx context.Context, in *HelloReq, opts ...grpc.CallOption) (*HelloReply, error) {
+func (c *crudClient) CreateUser(ctx context.Context, in *UserPost, opts ...grpc.CallOption) (*Status, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(HelloReply)
-	err := c.cc.Invoke(ctx, Greeter_SayHello_FullMethodName, in, out, cOpts...)
+	out := new(Status)
+	err := c.cc.Invoke(ctx, Crud_CreateUser_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// GreeterServer is the server API for Greeter service.
-// All implementations must embed UnimplementedGreeterServer
-// for forward compatibility.
-type GreeterServer interface {
-	SayHello(context.Context, *HelloReq) (*HelloReply, error)
-	mustEmbedUnimplementedGreeterServer()
+func (c *crudClient) DeleteUserById(ctx context.Context, in *UserDelete, opts ...grpc.CallOption) (*Status, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Status)
+	err := c.cc.Invoke(ctx, Crud_DeleteUserById_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
-// UnimplementedGreeterServer must be embedded to have
+func (c *crudClient) UpdateUserById(ctx context.Context, in *UserUpdate, opts ...grpc.CallOption) (*User, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(User)
+	err := c.cc.Invoke(ctx, Crud_UpdateUserById_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *crudClient) GetUserById(ctx context.Context, in *UserGet, opts ...grpc.CallOption) (*User, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(User)
+	err := c.cc.Invoke(ctx, Crud_GetUserById_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// CrudServer is the server API for Crud service.
+// All implementations must embed UnimplementedCrudServer
+// for forward compatibility.
+type CrudServer interface {
+	CreateUser(context.Context, *UserPost) (*Status, error)
+	DeleteUserById(context.Context, *UserDelete) (*Status, error)
+	UpdateUserById(context.Context, *UserUpdate) (*User, error)
+	GetUserById(context.Context, *UserGet) (*User, error)
+	mustEmbedUnimplementedCrudServer()
+}
+
+// UnimplementedCrudServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedGreeterServer struct{}
+type UnimplementedCrudServer struct{}
 
-func (UnimplementedGreeterServer) SayHello(context.Context, *HelloReq) (*HelloReply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SayHello not implemented")
+func (UnimplementedCrudServer) CreateUser(context.Context, *UserPost) (*Status, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateUser not implemented")
 }
-func (UnimplementedGreeterServer) mustEmbedUnimplementedGreeterServer() {}
-func (UnimplementedGreeterServer) testEmbeddedByValue()                 {}
+func (UnimplementedCrudServer) DeleteUserById(context.Context, *UserDelete) (*Status, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteUserById not implemented")
+}
+func (UnimplementedCrudServer) UpdateUserById(context.Context, *UserUpdate) (*User, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserById not implemented")
+}
+func (UnimplementedCrudServer) GetUserById(context.Context, *UserGet) (*User, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserById not implemented")
+}
+func (UnimplementedCrudServer) mustEmbedUnimplementedCrudServer() {}
+func (UnimplementedCrudServer) testEmbeddedByValue()              {}
 
-// UnsafeGreeterServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to GreeterServer will
+// UnsafeCrudServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to CrudServer will
 // result in compilation errors.
-type UnsafeGreeterServer interface {
-	mustEmbedUnimplementedGreeterServer()
+type UnsafeCrudServer interface {
+	mustEmbedUnimplementedCrudServer()
 }
 
-func RegisterGreeterServer(s grpc.ServiceRegistrar, srv GreeterServer) {
-	// If the following call pancis, it indicates UnimplementedGreeterServer was
+func RegisterCrudServer(s grpc.ServiceRegistrar, srv CrudServer) {
+	// If the following call pancis, it indicates UnimplementedCrudServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&Greeter_ServiceDesc, srv)
+	s.RegisterService(&Crud_ServiceDesc, srv)
 }
 
-func _Greeter_SayHello_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(HelloReq)
+func _Crud_CreateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UserPost)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(GreeterServer).SayHello(ctx, in)
+		return srv.(CrudServer).CreateUser(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Greeter_SayHello_FullMethodName,
+		FullMethod: Crud_CreateUser_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GreeterServer).SayHello(ctx, req.(*HelloReq))
+		return srv.(CrudServer).CreateUser(ctx, req.(*UserPost))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// Greeter_ServiceDesc is the grpc.ServiceDesc for Greeter service.
+func _Crud_DeleteUserById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UserDelete)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CrudServer).DeleteUserById(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Crud_DeleteUserById_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CrudServer).DeleteUserById(ctx, req.(*UserDelete))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Crud_UpdateUserById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UserUpdate)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CrudServer).UpdateUserById(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Crud_UpdateUserById_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CrudServer).UpdateUserById(ctx, req.(*UserUpdate))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Crud_GetUserById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UserGet)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CrudServer).GetUserById(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Crud_GetUserById_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CrudServer).GetUserById(ctx, req.(*UserGet))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// Crud_ServiceDesc is the grpc.ServiceDesc for Crud service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var Greeter_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "user.Greeter",
-	HandlerType: (*GreeterServer)(nil),
+var Crud_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "user.Crud",
+	HandlerType: (*CrudServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "SayHello",
-			Handler:    _Greeter_SayHello_Handler,
+			MethodName: "CreateUser",
+			Handler:    _Crud_CreateUser_Handler,
+		},
+		{
+			MethodName: "DeleteUserById",
+			Handler:    _Crud_DeleteUserById_Handler,
+		},
+		{
+			MethodName: "UpdateUserById",
+			Handler:    _Crud_UpdateUserById_Handler,
+		},
+		{
+			MethodName: "GetUserById",
+			Handler:    _Crud_GetUserById_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

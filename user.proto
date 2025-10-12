@@ -4,14 +4,44 @@ option go_package = "github.com/project-misis/users_proto/pb";
 
 package user;
 
-service Greeter {
-  rpc SayHello (HelloReq) returns (HelloReply) {}
+service Crud {
+  rpc CreateUser (UserPost) returns (Status) {}
+  rpc DeleteUserById (UserDelete) returns (Status) {}
+  rpc UpdateUserById (UserUpdate) returns (User) {}
+  rpc GetUserById (UserGet) returns (User) {}
 }
 
-message HelloReq {
-  string name = 1;
+message UserPost {
+  string email = 1;
+  string password = 2;
+  string first_name = 3;
+  string second_name = 4;
 }
 
-message HelloReply {
-  string message = 1;
+message User {
+  string email = 1;
+  string first_name = 2;
+  string second_name = 3;
+  string id = 4;
+}
+
+message UserUpdate {
+  optional string email = 1;
+  optional string first_name = 2;
+  optional string second_name = 3;
+  string id = 4;
+}
+
+message UserGet {
+  string id = 1;
+}
+
+message UserDelete {
+  string id = 1;
+}
+
+message Status {
+  bool ok = 1;
+  int32 code = 2;
+  optional string msg = 3;
 }
