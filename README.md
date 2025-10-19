@@ -8,7 +8,6 @@
     - [User](#user-User)
     - [UserDelete](#user-UserDelete)
     - [UserGet](#user-UserGet)
-    - [UserPost](#user-UserPost)
     - [UserUpdate](#user-UserUpdate)
   
     - [Crud](#user-Crud)
@@ -18,7 +17,6 @@
     - [User](#user-User)
     - [UserDelete](#user-UserDelete)
     - [UserGet](#user-UserGet)
-    - [UserPost](#user-UserPost)
     - [UserUpdate](#user-UserUpdate)
   
     - [Crud](#user-Crud)
@@ -28,7 +26,6 @@
     - [User](#user-User)
     - [UserDelete](#user-UserDelete)
     - [UserGet](#user-UserGet)
-    - [UserPost](#user-UserPost)
     - [UserUpdate](#user-UserUpdate)
   
     - [Crud](#user-Crud)
@@ -69,9 +66,10 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| phone_number | [string](#string) |  |  |
+| username | [string](#string) |  |  |
 | first_name | [string](#string) |  |  |
-| second_name | [string](#string) |  |  |
+| course | [string](#string) |  |  |
+| faculty | [string](#string) |  |  |
 | id | [string](#string) |  |  |
 
 
@@ -109,24 +107,6 @@
 
 
 
-<a name="user-UserPost"></a>
-
-### UserPost
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| phone_number | [string](#string) |  |  |
-| password | [string](#string) |  |  |
-| first_name | [string](#string) |  |  |
-| second_name | [string](#string) |  |  |
-
-
-
-
-
-
 <a name="user-UserUpdate"></a>
 
 ### UserUpdate
@@ -158,7 +138,6 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| CreateUser | [UserPost](#user-UserPost) | [User](#user-User) |  |
 | DeleteUserById | [UserDelete](#user-UserDelete) | [Status](#user-Status) |  |
 | UpdateUserById | [UserUpdate](#user-UserUpdate) | [User](#user-User) |  |
 | GetUserById | [UserGet](#user-UserGet) | [User](#user-User) |  |
@@ -199,9 +178,10 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| phone_number | [string](#string) |  |  |
+| username | [string](#string) |  |  |
 | first_name | [string](#string) |  |  |
-| second_name | [string](#string) |  |  |
+| course | [string](#string) |  |  |
+| faculty | [string](#string) |  |  |
 | id | [string](#string) |  |  |
 
 
@@ -239,24 +219,6 @@
 
 
 
-<a name="user-UserPost"></a>
-
-### UserPost
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| phone_number | [string](#string) |  |  |
-| password | [string](#string) |  |  |
-| first_name | [string](#string) |  |  |
-| second_name | [string](#string) |  |  |
-
-
-
-
-
-
 <a name="user-UserUpdate"></a>
 
 ### UserUpdate
@@ -288,7 +250,6 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| CreateUser | [UserPost](#user-UserPost) | [User](#user-User) |  |
 | DeleteUserById | [UserDelete](#user-UserDelete) | [Status](#user-Status) |  |
 | UpdateUserById | [UserUpdate](#user-UserUpdate) | [User](#user-User) |  |
 | GetUserById | [UserGet](#user-UserGet) | [User](#user-User) |  |
@@ -329,9 +290,10 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| phone_number | [string](#string) |  |  |
+| username | [string](#string) |  |  |
 | first_name | [string](#string) |  |  |
-| second_name | [string](#string) |  |  |
+| course | [string](#string) |  |  |
+| faculty | [string](#string) |  |  |
 | id | [string](#string) |  |  |
 
 
@@ -369,24 +331,6 @@
 
 
 
-<a name="user-UserPost"></a>
-
-### UserPost
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| phone_number | [string](#string) |  |  |
-| password | [string](#string) |  |  |
-| first_name | [string](#string) |  |  |
-| second_name | [string](#string) |  |  |
-
-
-
-
-
-
 <a name="user-UserUpdate"></a>
 
 ### UserUpdate
@@ -418,7 +362,6 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| CreateUser | [UserPost](#user-UserPost) | [User](#user-User) |  |
 | DeleteUserById | [UserDelete](#user-UserDelete) | [Status](#user-Status) |  |
 | UpdateUserById | [UserUpdate](#user-UserUpdate) | [User](#user-User) |  |
 | GetUserById | [UserGet](#user-UserGet) | [User](#user-User) |  |
