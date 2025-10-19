@@ -9,6 +9,7 @@ package pb
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -261,72 +262,12 @@ func (x *UserDelete) GetId() string {
 	return ""
 }
 
-type Status struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Ok            bool                   `protobuf:"varint,1,opt,name=ok,proto3" json:"ok,omitempty"`
-	Code          int32                  `protobuf:"varint,2,opt,name=code,proto3" json:"code,omitempty"`
-	Msg           *string                `protobuf:"bytes,3,opt,name=msg,proto3,oneof" json:"msg,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Status) Reset() {
-	*x = Status{}
-	mi := &file_user_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Status) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Status) ProtoMessage() {}
-
-func (x *Status) ProtoReflect() protoreflect.Message {
-	mi := &file_user_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Status.ProtoReflect.Descriptor instead.
-func (*Status) Descriptor() ([]byte, []int) {
-	return file_user_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *Status) GetOk() bool {
-	if x != nil {
-		return x.Ok
-	}
-	return false
-}
-
-func (x *Status) GetCode() int32 {
-	if x != nil {
-		return x.Code
-	}
-	return 0
-}
-
-func (x *Status) GetMsg() string {
-	if x != nil && x.Msg != nil {
-		return *x.Msg
-	}
-	return ""
-}
-
 var File_user_proto protoreflect.FileDescriptor
 
 const file_user_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"user.proto\x12\x04user\"\x83\x01\n" +
+	"user.proto\x12\x04user\x1a\x1bgoogle/protobuf/empty.proto\"\x83\x01\n" +
 	"\x04User\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\x12\x1d\n" +
 	"\n" +
@@ -351,14 +292,9 @@ const file_user_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"\x1c\n" +
 	"\n" +
 	"UserDelete\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"K\n" +
-	"\x06Status\x12\x0e\n" +
-	"\x02ok\x18\x01 \x01(\bR\x02ok\x12\x12\n" +
-	"\x04code\x18\x02 \x01(\x05R\x04code\x12\x15\n" +
-	"\x03msg\x18\x03 \x01(\tH\x00R\x03msg\x88\x01\x01B\x06\n" +
-	"\x04_msg2\x98\x01\n" +
-	"\x04Crud\x122\n" +
-	"\x0eDeleteUserByID\x12\x10.user.UserDelete\x1a\f.user.Status\"\x00\x120\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id2\xa2\x01\n" +
+	"\x04Crud\x12<\n" +
+	"\x0eDeleteUserByID\x12\x10.user.UserDelete\x1a\x16.google.protobuf.Empty\"\x00\x120\n" +
 	"\x0eUpdateUserByID\x12\x10.user.UserUpdate\x1a\n" +
 	".user.User\"\x00\x12*\n" +
 	"\vGetUserByID\x12\r.user.UserGet\x1a\n" +
@@ -376,19 +312,19 @@ func file_user_proto_rawDescGZIP() []byte {
 	return file_user_proto_rawDescData
 }
 
-var file_user_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_user_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_user_proto_goTypes = []any{
-	(*User)(nil),       // 0: user.User
-	(*UserUpdate)(nil), // 1: user.UserUpdate
-	(*UserGet)(nil),    // 2: user.UserGet
-	(*UserDelete)(nil), // 3: user.UserDelete
-	(*Status)(nil),     // 4: user.Status
+	(*User)(nil),          // 0: user.User
+	(*UserUpdate)(nil),    // 1: user.UserUpdate
+	(*UserGet)(nil),       // 2: user.UserGet
+	(*UserDelete)(nil),    // 3: user.UserDelete
+	(*emptypb.Empty)(nil), // 4: google.protobuf.Empty
 }
 var file_user_proto_depIdxs = []int32{
 	3, // 0: user.Crud.DeleteUserByID:input_type -> user.UserDelete
 	1, // 1: user.Crud.UpdateUserByID:input_type -> user.UserUpdate
 	2, // 2: user.Crud.GetUserByID:input_type -> user.UserGet
-	4, // 3: user.Crud.DeleteUserByID:output_type -> user.Status
+	4, // 3: user.Crud.DeleteUserByID:output_type -> google.protobuf.Empty
 	0, // 4: user.Crud.UpdateUserByID:output_type -> user.User
 	0, // 5: user.Crud.GetUserByID:output_type -> user.User
 	3, // [3:6] is the sub-list for method output_type
@@ -404,14 +340,13 @@ func file_user_proto_init() {
 		return
 	}
 	file_user_proto_msgTypes[1].OneofWrappers = []any{}
-	file_user_proto_msgTypes[4].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_user_proto_rawDesc), len(file_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

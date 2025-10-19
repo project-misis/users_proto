@@ -11,6 +11,7 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -28,7 +29,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CrudClient interface {
-	DeleteUserByID(ctx context.Context, in *UserDelete, opts ...grpc.CallOption) (*Status, error)
+	DeleteUserByID(ctx context.Context, in *UserDelete, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	UpdateUserByID(ctx context.Context, in *UserUpdate, opts ...grpc.CallOption) (*User, error)
 	GetUserByID(ctx context.Context, in *UserGet, opts ...grpc.CallOption) (*User, error)
 }
@@ -41,9 +42,9 @@ func NewCrudClient(cc grpc.ClientConnInterface) CrudClient {
 	return &crudClient{cc}
 }
 
-func (c *crudClient) DeleteUserByID(ctx context.Context, in *UserDelete, opts ...grpc.CallOption) (*Status, error) {
+func (c *crudClient) DeleteUserByID(ctx context.Context, in *UserDelete, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(Status)
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, Crud_DeleteUserByID_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -75,7 +76,7 @@ func (c *crudClient) GetUserByID(ctx context.Context, in *UserGet, opts ...grpc.
 // All implementations must embed UnimplementedCrudServer
 // for forward compatibility.
 type CrudServer interface {
-	DeleteUserByID(context.Context, *UserDelete) (*Status, error)
+	DeleteUserByID(context.Context, *UserDelete) (*emptypb.Empty, error)
 	UpdateUserByID(context.Context, *UserUpdate) (*User, error)
 	GetUserByID(context.Context, *UserGet) (*User, error)
 	mustEmbedUnimplementedCrudServer()
@@ -88,7 +89,7 @@ type CrudServer interface {
 // pointer dereference when methods are called.
 type UnimplementedCrudServer struct{}
 
-func (UnimplementedCrudServer) DeleteUserByID(context.Context, *UserDelete) (*Status, error) {
+func (UnimplementedCrudServer) DeleteUserByID(context.Context, *UserDelete) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteUserByID not implemented")
 }
 func (UnimplementedCrudServer) UpdateUserByID(context.Context, *UserUpdate) (*User, error) {

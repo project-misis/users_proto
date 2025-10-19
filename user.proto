@@ -2,10 +2,12 @@ syntax = "proto3";
 
 option go_package = "github.com/project-misis/users_proto/pb";
 
+import "google/protobuf/empty.proto";
+
 package user;
 
 service Crud {
-  rpc DeleteUserByID (UserDelete) returns (Status) {}
+  rpc DeleteUserByID (UserDelete) returns (google.protobuf.Empty) {}
   rpc UpdateUserByID (UserUpdate) returns (User) {}
   rpc GetUserByID (UserGet) returns (User) {}
 }
@@ -32,10 +34,4 @@ message UserGet {
 
 message UserDelete {
   string id = 1;
-}
-
-message Status {
-  bool ok = 1;
-  int32 code = 2;
-  optional string msg = 3;
 }

@@ -4,7 +4,6 @@
 ## Table of Contents
 
 - [user.proto](#user-proto)
-    - [Status](#user-Status)
     - [User](#user-User)
     - [UserDelete](#user-UserDelete)
     - [UserGet](#user-UserGet)
@@ -13,7 +12,6 @@
     - [Crud](#user-Crud)
   
 - [user.proto](#user-proto)
-    - [Status](#user-Status)
     - [User](#user-User)
     - [UserDelete](#user-UserDelete)
     - [UserGet](#user-UserGet)
@@ -22,7 +20,6 @@
     - [Crud](#user-Crud)
   
 - [user.proto](#user-proto)
-    - [Status](#user-Status)
     - [User](#user-User)
     - [UserDelete](#user-UserDelete)
     - [UserGet](#user-UserGet)
@@ -41,23 +38,6 @@
 
 
 
-<a name="user-Status"></a>
-
-### Status
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| ok | [bool](#bool) |  |  |
-| code | [int32](#int32) |  |  |
-| msg | [string](#string) | optional |  |
-
-
-
-
-
-
 <a name="user-User"></a>
 
 ### User
@@ -139,7 +119,7 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| DeleteUserByID | [UserDelete](#user-UserDelete) | [Status](#user-Status) |  |
+| DeleteUserByID | [UserDelete](#user-UserDelete) | [.google.protobuf.Empty](#google-protobuf-Empty) |  |
 | UpdateUserByID | [UserUpdate](#user-UserUpdate) | [User](#user-User) |  |
 | GetUserByID | [UserGet](#user-UserGet) | [User](#user-User) |  |
 
@@ -154,23 +134,6 @@
 
 
 
-<a name="user-Status"></a>
-
-### Status
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| ok | [bool](#bool) |  |  |
-| code | [int32](#int32) |  |  |
-| msg | [string](#string) | optional |  |
-
-
-
-
-
-
 <a name="user-User"></a>
 
 ### User
@@ -252,7 +215,7 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| DeleteUserByID | [UserDelete](#user-UserDelete) | [Status](#user-Status) |  |
+| DeleteUserByID | [UserDelete](#user-UserDelete) | [.google.protobuf.Empty](#google-protobuf-Empty) |  |
 | UpdateUserByID | [UserUpdate](#user-UserUpdate) | [User](#user-User) |  |
 | GetUserByID | [UserGet](#user-UserGet) | [User](#user-User) |  |
 
@@ -267,23 +230,6 @@
 
 
 
-<a name="user-Status"></a>
-
-### Status
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| ok | [bool](#bool) |  |  |
-| code | [int32](#int32) |  |  |
-| msg | [string](#string) | optional |  |
-
-
-
-
-
-
 <a name="user-User"></a>
 
 ### User
@@ -365,7 +311,7 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| DeleteUserByID | [UserDelete](#user-UserDelete) | [Status](#user-Status) |  |
+| DeleteUserByID | [UserDelete](#user-UserDelete) | [.google.protobuf.Empty](#google-protobuf-Empty) |  |
 | UpdateUserByID | [UserUpdate](#user-UserUpdate) | [User](#user-User) |  |
 | GetUserByID | [UserGet](#user-UserGet) | [User](#user-User) |  |
 
