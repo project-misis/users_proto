@@ -5,9 +5,9 @@ option go_package = "github.com/project-misis/users_proto/pb";
 package user;
 
 service Crud {
-  rpc DeleteUserById (UserDelete) returns (Status) {}
-  rpc UpdateUserById (UserUpdate) returns (User) {}
-  rpc GetUserById (UserGet) returns (User) {}
+  rpc DeleteUserByID (UserDelete) returns (Status) {}
+  rpc UpdateUserByID (UserUpdate) returns (User) {}
+  rpc GetUserByID (UserGet) returns (User) {}
 }
 
 message User {

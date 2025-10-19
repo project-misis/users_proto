@@ -138,9 +138,9 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| DeleteUserById | [UserDelete](#user-UserDelete) | [Status](#user-Status) |  |
-| UpdateUserById | [UserUpdate](#user-UserUpdate) | [User](#user-User) |  |
-| GetUserById | [UserGet](#user-UserGet) | [User](#user-User) |  |
+| DeleteUserByID | [UserDelete](#user-UserDelete) | [Status](#user-Status) |  |
+| UpdateUserByID | [UserUpdate](#user-UserUpdate) | [User](#user-User) |  |
+| GetUserByID | [UserGet](#user-UserGet) | [User](#user-User) |  |
 
  
 
@@ -250,9 +250,9 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| DeleteUserById | [UserDelete](#user-UserDelete) | [Status](#user-Status) |  |
-| UpdateUserById | [UserUpdate](#user-UserUpdate) | [User](#user-User) |  |
-| GetUserById | [UserGet](#user-UserGet) | [User](#user-User) |  |
+| DeleteUserByID | [UserDelete](#user-UserDelete) | [Status](#user-Status) |  |
+| UpdateUserByID | [UserUpdate](#user-UserUpdate) | [User](#user-User) |  |
+| GetUserByID | [UserGet](#user-UserGet) | [User](#user-User) |  |
 
  
 
@@ -362,9 +362,9 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| DeleteUserById | [UserDelete](#user-UserDelete) | [Status](#user-Status) |  |
-| UpdateUserById | [UserUpdate](#user-UserUpdate) | [User](#user-User) |  |
-| GetUserById | [UserGet](#user-UserGet) | [User](#user-User) |  |
+| DeleteUserByID | [UserDelete](#user-UserDelete) | [Status](#user-Status) |  |
+| UpdateUserByID | [UserUpdate](#user-UserUpdate) | [User](#user-User) |  |
+| GetUserByID | [UserGet](#user-UserGet) | [User](#user-User) |  |
 
  
 

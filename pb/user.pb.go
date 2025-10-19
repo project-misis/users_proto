@@ -348,10 +348,10 @@ const file_user_proto_rawDesc = "" +
 	"\x03msg\x18\x03 \x01(\tH\x00R\x03msg\x88\x01\x01B\x06\n" +
 	"\x04_msg2\x98\x01\n" +
 	"\x04Crud\x122\n" +
-	"\x0eDeleteUserById\x12\x10.user.UserDelete\x1a\f.user.Status\"\x00\x120\n" +
-	"\x0eUpdateUserById\x12\x10.user.UserUpdate\x1a\n" +
+	"\x0eDeleteUserByID\x12\x10.user.UserDelete\x1a\f.user.Status\"\x00\x120\n" +
+	"\x0eUpdateUserByID\x12\x10.user.UserUpdate\x1a\n" +
 	".user.User\"\x00\x12*\n" +
-	"\vGetUserById\x12\r.user.UserGet\x1a\n" +
+	"\vGetUserByID\x12\r.user.UserGet\x1a\n" +
 	".user.User\"\x00B)Z'github.com/project-misis/users_proto/pbb\x06proto3"
 
 var (
@@ -375,12 +375,12 @@ var file_user_proto_goTypes = []any{
 	(*Status)(nil),     // 4: user.Status
 }
 var file_user_proto_depIdxs = []int32{
-	3, // 0: user.Crud.DeleteUserById:input_type -> user.UserDelete
-	1, // 1: user.Crud.UpdateUserById:input_type -> user.UserUpdate
-	2, // 2: user.Crud.GetUserById:input_type -> user.UserGet
-	4, // 3: user.Crud.DeleteUserById:output_type -> user.Status
-	0, // 4: user.Crud.UpdateUserById:output_type -> user.User
-	0, // 5: user.Crud.GetUserById:output_type -> user.User
+	3, // 0: user.Crud.DeleteUserByID:input_type -> user.UserDelete
+	1, // 1: user.Crud.UpdateUserByID:input_type -> user.UserUpdate
+	2, // 2: user.Crud.GetUserByID:input_type -> user.UserGet
+	4, // 3: user.Crud.DeleteUserByID:output_type -> user.Status
+	0, // 4: user.Crud.UpdateUserByID:output_type -> user.User
+	0, // 5: user.Crud.GetUserByID:output_type -> user.User
 	3, // [3:6] is the sub-list for method output_type
 	0, // [0:3] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
