@@ -115,9 +115,10 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| phone_number | [string](#string) | optional |  |
+| username | [string](#string) | optional |  |
 | first_name | [string](#string) | optional |  |
-| second_name | [string](#string) | optional |  |
+| course | [string](#string) | optional |  |
+| faculty | [string](#string) | optional |  |
 | id | [string](#string) |  |  |
 
 
@@ -227,9 +228,10 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| phone_number | [string](#string) | optional |  |
+| username | [string](#string) | optional |  |
 | first_name | [string](#string) | optional |  |
-| second_name | [string](#string) | optional |  |
+| course | [string](#string) | optional |  |
+| faculty | [string](#string) | optional |  |
 | id | [string](#string) |  |  |
 
 
@@ -339,9 +341,10 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| phone_number | [string](#string) | optional |  |
+| username | [string](#string) | optional |  |
 | first_name | [string](#string) | optional |  |
-| second_name | [string](#string) | optional |  |
+| course | [string](#string) | optional |  |
+| faculty | [string](#string) | optional |  |
 | id | [string](#string) |  |  |
 
 

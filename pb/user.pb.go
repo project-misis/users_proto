@@ -99,10 +99,11 @@ func (x *User) GetId() string {
 
 type UserUpdate struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	PhoneNumber   *string                `protobuf:"bytes,1,opt,name=phone_number,json=phoneNumber,proto3,oneof" json:"phone_number,omitempty"`
+	Username      *string                `protobuf:"bytes,1,opt,name=username,proto3,oneof" json:"username,omitempty"`
 	FirstName     *string                `protobuf:"bytes,2,opt,name=first_name,json=firstName,proto3,oneof" json:"first_name,omitempty"`
-	SecondName    *string                `protobuf:"bytes,3,opt,name=second_name,json=secondName,proto3,oneof" json:"second_name,omitempty"`
-	Id            string                 `protobuf:"bytes,4,opt,name=id,proto3" json:"id,omitempty"`
+	Course        *string                `protobuf:"bytes,3,opt,name=course,proto3,oneof" json:"course,omitempty"`
+	Faculty       *string                `protobuf:"bytes,4,opt,name=faculty,proto3,oneof" json:"faculty,omitempty"`
+	Id            string                 `protobuf:"bytes,5,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -137,9 +138,9 @@ func (*UserUpdate) Descriptor() ([]byte, []int) {
 	return file_user_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *UserUpdate) GetPhoneNumber() string {
-	if x != nil && x.PhoneNumber != nil {
-		return *x.PhoneNumber
+func (x *UserUpdate) GetUsername() string {
+	if x != nil && x.Username != nil {
+		return *x.Username
 	}
 	return ""
 }
@@ -151,9 +152,16 @@ func (x *UserUpdate) GetFirstName() string {
 	return ""
 }
 
-func (x *UserUpdate) GetSecondName() string {
-	if x != nil && x.SecondName != nil {
-		return *x.SecondName
+func (x *UserUpdate) GetCourse() string {
+	if x != nil && x.Course != nil {
+		return *x.Course
+	}
+	return ""
+}
+
+func (x *UserUpdate) GetFaculty() string {
+	if x != nil && x.Faculty != nil {
+		return *x.Faculty
 	}
 	return ""
 }
@@ -325,18 +333,20 @@ const file_user_proto_rawDesc = "" +
 	"first_name\x18\x02 \x01(\tR\tfirstName\x12\x16\n" +
 	"\x06course\x18\x03 \x01(\tR\x06course\x12\x18\n" +
 	"\afaculty\x18\x04 \x01(\tR\afaculty\x12\x0e\n" +
-	"\x02id\x18\x05 \x01(\tR\x02id\"\xbe\x01\n" +
+	"\x02id\x18\x05 \x01(\tR\x02id\"\xd0\x01\n" +
 	"\n" +
-	"UserUpdate\x12&\n" +
-	"\fphone_number\x18\x01 \x01(\tH\x00R\vphoneNumber\x88\x01\x01\x12\"\n" +
+	"UserUpdate\x12\x1f\n" +
+	"\busername\x18\x01 \x01(\tH\x00R\busername\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"first_name\x18\x02 \x01(\tH\x01R\tfirstName\x88\x01\x01\x12$\n" +
-	"\vsecond_name\x18\x03 \x01(\tH\x02R\n" +
-	"secondName\x88\x01\x01\x12\x0e\n" +
-	"\x02id\x18\x04 \x01(\tR\x02idB\x0f\n" +
-	"\r_phone_numberB\r\n" +
-	"\v_first_nameB\x0e\n" +
-	"\f_second_name\"\x19\n" +
+	"first_name\x18\x02 \x01(\tH\x01R\tfirstName\x88\x01\x01\x12\x1b\n" +
+	"\x06course\x18\x03 \x01(\tH\x02R\x06course\x88\x01\x01\x12\x1d\n" +
+	"\afaculty\x18\x04 \x01(\tH\x03R\afaculty\x88\x01\x01\x12\x0e\n" +
+	"\x02id\x18\x05 \x01(\tR\x02idB\v\n" +
+	"\t_usernameB\r\n" +
+	"\v_first_nameB\t\n" +
+	"\a_courseB\n" +
+	"\n" +
+	"\b_faculty\"\x19\n" +
 	"\aUserGet\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"\x1c\n" +
 	"\n" +
