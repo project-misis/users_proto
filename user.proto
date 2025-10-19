@@ -1,10 +1,11 @@
 syntax = "proto3";
 
+package user;
+
 option go_package = "github.com/project-misis/users_proto/pb";
 
 import "google/protobuf/empty.proto";
-
-package user;
+import "buf/validate/validate.proto";
 
 service Crud {
   rpc DeleteUserByID (UserDelete) returns (google.protobuf.Empty) {}
@@ -13,25 +14,26 @@ service Crud {
 }
 
 message User {
-  string username = 1;
-  string first_name = 2;
-  string course = 3;
-  string faculty = 4;
-  string id = 5;
+  string username = 1 [(buf.validate.field).string = {min_len: 1, max_len: 200}];
+  string first_name = 2 [(buf.validate.field).string = {min_len: 1, max_len: 200}];
+  string course = 3 [(buf.validate.field).string = {min_len: 1, max_len: 200}];
+  string faculty = 4 [(buf.validate.field).string = {min_len: 1, max_len: 200}];
+  string id = 5 [(buf.validate.field).string.uuid = true];
 }
 
 message UserUpdate {
-  optional string username = 1;
-  optional string first_name = 2;
-  optional string course = 3;
-  optional string faculty = 4;
-  string id = 5;
+  optional string username = 1 [(buf.validate.field).string = {min_len: 1, max_len: 200}];
+  optional string first_name = 2 [(buf.validate.field).string = {min_len: 1, max_len: 200}];
+  optional string course = 3 [(buf.validate.field).string = {min_len: 1, max_len: 200}];
+  optional string faculty = 4 [(buf.validate.field).string = {min_len: 1, max_len: 200}];
+  string id = 5 [(buf.validate.field).string.uuid = true];
 }
 
 message UserGet {
-  string id = 1;
+  string id = 1 [(buf.validate.field).string.uuid = true];
 }
 
 message UserDelete {
-  string id = 1;
+  string id = 1 [(buf.validate.field).string.uuid = true];
 }
+
