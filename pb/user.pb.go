@@ -263,6 +263,94 @@ func (x *UserDelete) GetId() string {
 	return ""
 }
 
+type AuthCheckModel struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Code          string                 `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AuthCheckModel) Reset() {
+	*x = AuthCheckModel{}
+	mi := &file_user_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AuthCheckModel) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AuthCheckModel) ProtoMessage() {}
+
+func (x *AuthCheckModel) ProtoReflect() protoreflect.Message {
+	mi := &file_user_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AuthCheckModel.ProtoReflect.Descriptor instead.
+func (*AuthCheckModel) Descriptor() ([]byte, []int) {
+	return file_user_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *AuthCheckModel) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
+type Token struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Token         string                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Token) Reset() {
+	*x = Token{}
+	mi := &file_user_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Token) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Token) ProtoMessage() {}
+
+func (x *Token) ProtoReflect() protoreflect.Message {
+	mi := &file_user_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Token.ProtoReflect.Descriptor instead.
+func (*Token) Descriptor() ([]byte, []int) {
+	return file_user_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *Token) GetToken() string {
+	if x != nil {
+		return x.Token
+	}
+	return ""
+}
+
 var File_user_proto protoreflect.FileDescriptor
 
 const file_user_proto_rawDesc = "" +
@@ -301,13 +389,18 @@ const file_user_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\"&\n" +
 	"\n" +
 	"UserDelete\x12\x18\n" +
-	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id2\xa2\x01\n" +
+	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\"/\n" +
+	"\x0eAuthCheckModel\x12\x1d\n" +
+	"\x04code\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18\bR\x04code\"\x1d\n" +
+	"\x05Token\x12\x14\n" +
+	"\x05token\x18\x01 \x01(\tR\x05token2\xd4\x01\n" +
 	"\x04Crud\x12<\n" +
 	"\x0eDeleteUserByID\x12\x10.user.UserDelete\x1a\x16.google.protobuf.Empty\"\x00\x120\n" +
 	"\x0eUpdateUserByID\x12\x10.user.UserUpdate\x1a\n" +
 	".user.User\"\x00\x12*\n" +
 	"\vGetUserByID\x12\r.user.UserGet\x1a\n" +
-	".user.User\"\x00B)Z'github.com/project-misis/users_proto/pbb\x06proto3"
+	".user.User\"\x00\x120\n" +
+	"\tCheckAuth\x12\x14.user.AuthCheckModel\x1a\v.user.Token\"\x00B)Z'github.com/project-misis/users_proto/pbb\x06proto3"
 
 var (
 	file_user_proto_rawDescOnce sync.Once
@@ -321,23 +414,27 @@ func file_user_proto_rawDescGZIP() []byte {
 	return file_user_proto_rawDescData
 }
 
-var file_user_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_user_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_user_proto_goTypes = []any{
-	(*User)(nil),          // 0: user.User
-	(*UserUpdate)(nil),    // 1: user.UserUpdate
-	(*UserGet)(nil),       // 2: user.UserGet
-	(*UserDelete)(nil),    // 3: user.UserDelete
-	(*emptypb.Empty)(nil), // 4: google.protobuf.Empty
+	(*User)(nil),           // 0: user.User
+	(*UserUpdate)(nil),     // 1: user.UserUpdate
+	(*UserGet)(nil),        // 2: user.UserGet
+	(*UserDelete)(nil),     // 3: user.UserDelete
+	(*AuthCheckModel)(nil), // 4: user.AuthCheckModel
+	(*Token)(nil),          // 5: user.Token
+	(*emptypb.Empty)(nil),  // 6: google.protobuf.Empty
 }
 var file_user_proto_depIdxs = []int32{
 	3, // 0: user.Crud.DeleteUserByID:input_type -> user.UserDelete
 	1, // 1: user.Crud.UpdateUserByID:input_type -> user.UserUpdate
 	2, // 2: user.Crud.GetUserByID:input_type -> user.UserGet
-	4, // 3: user.Crud.DeleteUserByID:output_type -> google.protobuf.Empty
-	0, // 4: user.Crud.UpdateUserByID:output_type -> user.User
-	0, // 5: user.Crud.GetUserByID:output_type -> user.User
-	3, // [3:6] is the sub-list for method output_type
-	0, // [0:3] is the sub-list for method input_type
+	4, // 3: user.Crud.CheckAuth:input_type -> user.AuthCheckModel
+	6, // 4: user.Crud.DeleteUserByID:output_type -> google.protobuf.Empty
+	0, // 5: user.Crud.UpdateUserByID:output_type -> user.User
+	0, // 6: user.Crud.GetUserByID:output_type -> user.User
+	5, // 7: user.Crud.CheckAuth:output_type -> user.Token
+	4, // [4:8] is the sub-list for method output_type
+	0, // [0:4] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -355,7 +452,7 @@ func file_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_user_proto_rawDesc), len(file_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

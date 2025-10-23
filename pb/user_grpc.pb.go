@@ -23,6 +23,7 @@ const (
 	Crud_DeleteUserByID_FullMethodName = "/user.Crud/DeleteUserByID"
 	Crud_UpdateUserByID_FullMethodName = "/user.Crud/UpdateUserByID"
 	Crud_GetUserByID_FullMethodName    = "/user.Crud/GetUserByID"
+	Crud_CheckAuth_FullMethodName      = "/user.Crud/CheckAuth"
 )
 
 // CrudClient is the client API for Crud service.
@@ -32,6 +33,7 @@ type CrudClient interface {
 	DeleteUserByID(ctx context.Context, in *UserDelete, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	UpdateUserByID(ctx context.Context, in *UserUpdate, opts ...grpc.CallOption) (*User, error)
 	GetUserByID(ctx context.Context, in *UserGet, opts ...grpc.CallOption) (*User, error)
+	CheckAuth(ctx context.Context, in *AuthCheckModel, opts ...grpc.CallOption) (*Token, error)
 }
 
 type crudClient struct {
@@ -72,6 +74,16 @@ func (c *crudClient) GetUserByID(ctx context.Context, in *UserGet, opts ...grpc.
 	return out, nil
 }
 
+func (c *crudClient) CheckAuth(ctx context.Context, in *AuthCheckModel, opts ...grpc.CallOption) (*Token, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Token)
+	err := c.cc.Invoke(ctx, Crud_CheckAuth_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CrudServer is the server API for Crud service.
 // All implementations must embed UnimplementedCrudServer
 // for forward compatibility.
@@ -79,6 +91,7 @@ type CrudServer interface {
 	DeleteUserByID(context.Context, *UserDelete) (*emptypb.Empty, error)
 	UpdateUserByID(context.Context, *UserUpdate) (*User, error)
 	GetUserByID(context.Context, *UserGet) (*User, error)
+	CheckAuth(context.Context, *AuthCheckModel) (*Token, error)
 	mustEmbedUnimplementedCrudServer()
 }
 
@@ -97,6 +110,9 @@ func (UnimplementedCrudServer) UpdateUserByID(context.Context, *UserUpdate) (*Us
 }
 func (UnimplementedCrudServer) GetUserByID(context.Context, *UserGet) (*User, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUserByID not implemented")
+}
+func (UnimplementedCrudServer) CheckAuth(context.Context, *AuthCheckModel) (*Token, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CheckAuth not implemented")
 }
 func (UnimplementedCrudServer) mustEmbedUnimplementedCrudServer() {}
 func (UnimplementedCrudServer) testEmbeddedByValue()              {}
@@ -173,6 +189,24 @@ func _Crud_GetUserByID_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Crud_CheckAuth_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AuthCheckModel)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CrudServer).CheckAuth(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Crud_CheckAuth_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CrudServer).CheckAuth(ctx, req.(*AuthCheckModel))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Crud_ServiceDesc is the grpc.ServiceDesc for Crud service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -191,6 +225,10 @@ var Crud_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetUserByID",
 			Handler:    _Crud_GetUserByID_Handler,
+		},
+		{
+			MethodName: "CheckAuth",
+			Handler:    _Crud_CheckAuth_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -4,6 +4,8 @@
 ## Table of Contents
 
 - [user.proto](#user-proto)
+    - [AuthCheckModel](#user-AuthCheckModel)
+    - [Token](#user-Token)
     - [User](#user-User)
     - [UserDelete](#user-UserDelete)
     - [UserGet](#user-UserGet)
@@ -19,6 +21,36 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## user.proto
+
+
+
+<a name="user-AuthCheckModel"></a>
+
+### AuthCheckModel
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| code | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="user-Token"></a>
+
+### Token
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| token | [string](#string) |  |  |
+
+
+
 
 
 
@@ -106,6 +138,7 @@
 | DeleteUserByID | [UserDelete](#user-UserDelete) | [.google.protobuf.Empty](#google-protobuf-Empty) |  |
 | UpdateUserByID | [UserUpdate](#user-UserUpdate) | [User](#user-User) |  |
 | GetUserByID | [UserGet](#user-UserGet) | [User](#user-User) |  |
+| CheckAuth | [AuthCheckModel](#user-AuthCheckModel) | [Token](#user-Token) |  |
 
  
 
